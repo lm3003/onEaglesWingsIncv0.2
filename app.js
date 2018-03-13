@@ -42,6 +42,7 @@ app.use(function(req, res, next) {
 });
 
 app.post('/contact-us', function (req, res, next) {
+    console.log(req.body);
     app.mailer.send('email', {
         to: 'oneagleswingsinc.jk@gmail.com', // REQUIRED. This can be a comma delimited string just like a normal email to field.
         subject: req.body.subject, // REQUIRED.

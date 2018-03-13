@@ -37,7 +37,7 @@
     "zone.js": "^0.8.5"
   },
   "devDependencies": {
-    "@angular/cli": "^1.5.0",
+    "@angular/cli": "^1.7.3",
     "@ngtools/webpack": "^1.8.0",
     "@types/core-js": "0.9.36",
     "@types/node": "^6.0.45",

@@ -24,7 +24,7 @@ export class ContactUsComponent{
             this.contactUsForm.value.message);
         this.contactUsService.postContactUSForm(contactUsModel)
             .subscribe(
-                data => this.alerts.setMessage(data,'success'),
+                data => this.alerts.setMessage("message sent!",'success'),
                 error => this.alerts.setMessage('Error occured!!!','error')
             );
         this.contactUsForm.resetForm();

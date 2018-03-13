@@ -1,8 +1,8 @@
 import {ContactUsModel} from "./contact-us.model";
-import {Component, Injectable} from "@angular/core";
+import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/Rx';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable()
 export class ContactUsService{
@@ -11,15 +11,16 @@ export class ContactUsService{
     }
 
     postContactUSForm(contactUSModel: ContactUsModel){
-        const headers = new Headers({'Content-Type':'text/plain'});
-        return this.http.post('http://localhost:3000/contact-us',contactUSModel,
-            {headers:headers,responseType:'text'})
-            .map((response: Response) => {
+        console.log(JSON.stringify(contactUSModel));
+        const headers = new HttpHeaders().set('Content-Type','application/json');
+        return this.http.post('http://localhost:3000/contact-us',JSON.stringify(contactUSModel),
+            {headers:headers, observe: 'response',responseType:'text'})
+            .map((response) => {
             return response;
             })
-            .catch((error: Response) => {
+            .catch((error) => {
             console.log(error);
-            Observable.throw(error.json())
+            return Observable.throw(error.json())
             });
     }
 }
